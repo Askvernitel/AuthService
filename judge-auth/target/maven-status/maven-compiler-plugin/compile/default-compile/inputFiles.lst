@@ -1,0 +1,9 @@
+/home/danieludzlieresi/Desktop/backend-project/AuthService/judge-auth/src/main/java/com/judge/auth/app/App.java
+/home/danieludzlieresi/Desktop/backend-project/AuthService/judge-auth/src/main/java/com/judge/auth/controllers/AuthController.java
+/home/danieludzlieresi/Desktop/backend-project/AuthService/judge-auth/src/main/java/com/judge/auth/controllers/ExceptionController.java
+/home/danieludzlieresi/Desktop/backend-project/AuthService/judge-auth/src/main/java/com/judge/auth/dto/LoginDTO.java
+/home/danieludzlieresi/Desktop/backend-project/AuthService/judge-auth/src/main/java/com/judge/auth/dto/RegisterDTO.java
+/home/danieludzlieresi/Desktop/backend-project/AuthService/judge-auth/src/main/java/com/judge/auth/grpc/Auth.java
+/home/danieludzlieresi/Desktop/backend-project/AuthService/judge-auth/src/main/java/com/judge/auth/grpc/AuthServiceGrpc.java
+/home/danieludzlieresi/Desktop/backend-project/AuthService/judge-auth/src/main/java/com/judge/auth/grpc/AuthServiceImpl.java
+/home/danieludzlieresi/Desktop/backend-project/AuthService/judge-auth/src/main/java/com/judge/auth/interfaces/IAuthController.java

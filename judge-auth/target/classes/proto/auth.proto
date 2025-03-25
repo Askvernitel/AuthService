@@ -1,0 +1,15 @@
+syntax="proto3";
+
+option java_package = "com.judge.auth.grpc";
+
+message AuthRequest{ 
+	string token = 1;
+}
+
+message AuthResponse{ 
+	bool ok = 1;
+}
+
+service AuthService{ 
+	rpc Auth (AuthRequest) returns (AuthResponse);
+}
