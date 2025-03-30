@@ -20,6 +20,7 @@ com/judge/auth/grpc/AuthServiceGrpc$AuthServiceImplBase.class
 com/judge/auth/dto/LoginDTO.class
 com/judge/auth/grpc/Auth$AuthRequest.class
 com/judge/auth/grpc/AuthServiceGrpc$AuthServiceBaseDescriptorSupplier.class
+com/judge/auth/services/security/AuthService.class
 com/judge/auth/grpc/Auth$AuthResponseOrBuilder.class
 com/judge/auth/grpc/Auth$AuthResponse$Builder.class
 com/judge/auth/grpc/AuthServiceGrpc.class

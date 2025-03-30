@@ -12,9 +12,9 @@ import com.judge.auth.dto.RegisterDTO;
 public interface IAuthController {
 
 	@PostMapping("/login")
-	public LoginDTO login();
+	public LoginDTO login(LoginDTO loginData) throws Exception;
 
 	@PostMapping("/register")
-	public RegisterDTO register();
+	public RegisterDTO register(RegisterDTO registerData);
 
 }
