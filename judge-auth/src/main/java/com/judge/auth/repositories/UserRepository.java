@@ -8,4 +8,5 @@ import com.judge.auth.entities.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
+	User findOneByEmail(String email);
 }

@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * AuthService
  */
 @SpringBootApplication(scanBasePackages = "com.judge.auth")
-@EnableJpaRepositories("com.judge.auth.repositories")
-@EntityScan("com.judge.auth.entities")
+@EnableJpaRepositories(basePackages = "com.judge.auth.repositories")
+@EntityScan(basePackages = "com.judge.auth.entities")
 @EnableAutoConfiguration
 public class App {
     public static void main(String[] args) {

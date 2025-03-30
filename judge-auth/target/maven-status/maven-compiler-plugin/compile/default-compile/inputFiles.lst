@@ -20,3 +20,4 @@
 /home/danieludzlieresi/Desktop/backend-project/AuthService/judge-auth/src/main/java/com/judge/auth/services/security/AuthService.java
 /home/danieludzlieresi/Desktop/backend-project/AuthService/judge-auth/src/main/java/com/judge/auth/services/security/jwt/JWTService.java
 /home/danieludzlieresi/Desktop/backend-project/AuthService/judge-auth/src/main/java/com/judge/auth/services/validation/ValidationService.java
+/home/danieludzlieresi/Desktop/backend-project/AuthService/judge-auth/src/main/java/com/judge/auth/util/Helpers.java

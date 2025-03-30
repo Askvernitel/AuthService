@@ -4,6 +4,7 @@ import com.judge.auth.annotations.Validate;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -12,6 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class LoginDTO {
 	@Validate(email = true, minLength = 10, maxLength = 20)
 	private String email;

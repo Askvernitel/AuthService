@@ -12,6 +12,8 @@ public @interface Validate {
 
 	public int minLength() default Integer.MIN_VALUE;
 
+	public boolean required() default false;
+
 	public boolean email() default false;
 
 }

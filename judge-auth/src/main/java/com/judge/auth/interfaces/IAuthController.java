@@ -15,6 +15,6 @@ public interface IAuthController {
 	public LoginDTO login(LoginDTO loginData) throws Exception;
 
 	@PostMapping("/register")
-	public RegisterDTO register(RegisterDTO registerData);
+	public RegisterDTO register(RegisterDTO registerData) throws Exception;
 
 }

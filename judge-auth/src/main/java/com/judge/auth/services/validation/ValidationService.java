@@ -8,32 +8,37 @@ import org.springframework.stereotype.Service;
 
 import com.judge.auth.annotations.Validate;
 import com.judge.auth.exceptions.base.ValidationException;
+import com.judge.auth.util.Helpers;
 
 @Service
 public class ValidationService {
 
-	private Object getFieldValue(Field field, Object object) throws IllegalAccessException {
-		field.setAccessible(true);
-		return field.get(object);
-	}
-
-	private Boolean isInRange(String str, Integer minLength, Integer maxLength) {
-		return (minLength <= str.length() && str.length() <= maxLength);
-	}
-
-	private Boolean isValidLength(Field field, Object object) {
+	private Boolean isValidFieldLength(Field field, Object object) {
 		try {
 			int maxLength = field.getAnnotation(Validate.class).maxLength();
 			int minLength = field.getAnnotation(Validate.class).minLength();
-			Object value = getFieldValue(field, object);
+			Object value = Helpers.getFieldValue(field, object);
 			if (!(value instanceof String))
 				return false;
 			String strValue = (String) value;
 
-			return isInRange(strValue, minLength, maxLength);
+			return Helpers.isInRange(strValue, minLength, maxLength);
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	private Boolean isValidFieldRequired(Field field, Object object) {
+		try {
+			Boolean required = field.getAnnotation(Validate.class).required();
+			Object value = Helpers.getFieldValue(field, object);
+			if (value == null && required)
+				return false;
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+
 	}
 
 	/*
@@ -47,8 +52,7 @@ public class ValidationService {
 	 */
 
 	private Boolean isValidField(Field field, Object object) throws IllegalAccessException {
-
-		return isValidLength(field, object);
+		return isValidFieldLength(field, object) && isValidFieldRequired(field, object);
 
 	}
 
@@ -67,4 +71,5 @@ public class ValidationService {
 		}
 		return true;
 	}
+
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.judge.auth.dto.LoginDTO;
 import com.judge.auth.dto.RegisterDTO;
 import com.judge.auth.interfaces.IAuthController;
+import com.judge.auth.services.security.AuthService;
 import com.judge.auth.services.validation.ValidationService;
 
 /**
@@ -18,15 +19,18 @@ import com.judge.auth.services.validation.ValidationService;
 public class AuthController implements IAuthController {
 	@Autowired
 	ValidationService validationService;
+	@Autowired
+	AuthService authService;
 
 	@Override
 	public LoginDTO login(@RequestBody LoginDTO loginData) throws Exception {
-		validationService.isValid(loginData);
 		return null;
 	}
 
 	@Override
-	public RegisterDTO register(@RequestBody RegisterDTO registerData) {
+	public RegisterDTO register(@RequestBody RegisterDTO registerData) throws Exception {
+		validationService.isValid(registerData);
+		authService.register(registerData);
 		return null;
 	}
 
