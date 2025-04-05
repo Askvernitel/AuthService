@@ -1,15 +1,15 @@
 package com.judge.auth.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import com.judge.auth.dto.AuthResponse;
 import com.judge.auth.dto.LoginDTO;
 import com.judge.auth.dto.RegisterDTO;
 import com.judge.auth.interfaces.IAuthController;
 import com.judge.auth.services.security.AuthService;
+import com.judge.auth.services.security.jwt.JWTService;
 import com.judge.auth.services.validation.ValidationService;
 
 /**
@@ -21,17 +21,20 @@ public class AuthController implements IAuthController {
 	ValidationService validationService;
 	@Autowired
 	AuthService authService;
+	@Autowired
+	JWTService jwtService;
 
 	@Override
-	public LoginDTO login(@RequestBody LoginDTO loginData) throws Exception {
-		return null;
+	public ResponseEntity<AuthResponse> login(@RequestBody LoginDTO loginData) throws Exception {
+
+		validationService.isValid(loginData);
+		return	ResponseEntity.ok(authService.login(loginData));
 	}
 
 	@Override
-	public RegisterDTO register(@RequestBody RegisterDTO registerData) throws Exception {
+	public ResponseEntity<AuthResponse> register(@RequestBody RegisterDTO registerData) throws Exception {
 		validationService.isValid(registerData);
-		authService.register(registerData);
-		return null;
+		return ResponseEntity.ok(authService.register(registerData));
 	}
 
 }
