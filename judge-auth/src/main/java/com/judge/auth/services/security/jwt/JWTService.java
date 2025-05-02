@@ -7,15 +7,12 @@ import java.util.Base64.Decoder;
 import javax.crypto.SecretKey;
 
 import com.judge.auth.dto.JWTEncodable;
+import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.judge.auth.dto.RegisterDTO;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
@@ -30,17 +27,18 @@ public class JWTService {
 	public String generateJWT(JWTEncodable jwtEncodable) {
 		return Jwts.builder().signWith(getSigningKey()).issuedAt(new Date()).expiration(new Date(System.currentTimeMillis() + 1000*60*24))
 				.claim("email", jwtEncodable.getEmail())
-				.claim("userName", jwtEncodable.getUserName()).compact();
+				.claim("name", jwtEncodable.getName()).compact();
 	}
-	/*
-	 * public Boolean isExpiredJWT(String token) {
-	 * 
-	 * }
-	 * 
-	 * public Boolean isValidJWT(String token) {
-	 * 
-	 * }
-	 */
+
+	public Boolean isExpiredJWT(String token) {
+		Claims claims = getClaims(token);
+		return claims.getExpiration().before(new Date());
+	}
+
+	public Boolean isValidJWT(String token) {
+		return isExpiredJWT(token);
+	 }
+
 
 	private Claims getClaims(String token) {
 		return Jwts.parser().setSigningKey(getSigningKey()).build().parseSignedClaims(token).getPayload();

@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class RegisterDTO {
 	@Validate(required = true)
-	private String userName;
+	private String name;
 
 	@Validate(required = true, email = true)
 	private String email;

@@ -15,7 +15,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,8 +34,8 @@ public class User implements UserDetails {
 	@Column(name = "email", unique = true)
 	String email;
 
-	@Column(name = "username")
-	String username;
+	@Column(name = "name")
+	String name;
 
 	@Column(name = "password")
 	String password;
@@ -75,13 +74,15 @@ public class User implements UserDetails {
 	}
 
 	@Override
+	public String getUsername() {
+		return email;
+	}
+
+	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
-	public String getUsername() {
-		return email;
-	}
 
 }

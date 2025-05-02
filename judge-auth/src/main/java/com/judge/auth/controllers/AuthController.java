@@ -26,9 +26,9 @@ public class AuthController implements IAuthController {
 
 	@Override
 	public ResponseEntity<AuthResponse> login(@RequestBody LoginDTO loginData) throws Exception {
-
+		System.out.println("Login...");
 		validationService.isValid(loginData);
-		return	ResponseEntity.ok(authService.login(loginData));
+		return ResponseEntity.ok(authService.login(loginData));
 	}
 
 	@Override

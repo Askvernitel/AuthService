@@ -8,5 +8,5 @@ import lombok.*;
 @Getter
 public class JWTEncodable {
     private String email;
-    private String userName;
+    private String name;
 }

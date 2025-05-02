@@ -48,7 +48,6 @@ public class Helpers {
 					boolean haveSameName = method1.getName().substring(3)	.equals(method2.getName().substring(3));
 					if (!areSameType) continue;
 					if (haveSameName) {
-						System.out.println(method2.getName());
 						try {
 							method2.invoke(to, method1.invoke(from));
 						} catch (Exception e) {
@@ -57,7 +56,6 @@ public class Helpers {
 						}
 					}
 				}catch(Exception e){
-					System.out.println(e.getMessage());
 					//ignore
 				}
 			}
