@@ -7,6 +7,7 @@ import java.util.Base64.Decoder;
 import javax.crypto.SecretKey;
 
 import com.judge.auth.dto.JWTEncodable;
+import com.judge.auth.util.Helpers;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class JWTService {
 	private String secretKey;
 
 	public String generateJWT(JWTEncodable jwtEncodable) {
-		return Jwts.builder().signWith(getSigningKey()).issuedAt(new Date()).expiration(new Date(System.currentTimeMillis() + 1000*60*24))
+		return Jwts.builder().signWith(getSigningKey()).issuedAt(new Date()).expiration(Helpers.dateAfterHours(24))
 				.claim("email", jwtEncodable.getEmail())
 				.claim("name", jwtEncodable.getName()).compact();
 	}
@@ -37,7 +38,7 @@ public class JWTService {
 
 	public Boolean isValidJWT(String token) {
 		return isExpiredJWT(token);
-	 }
+	}
 
 
 	private Claims getClaims(String token) {

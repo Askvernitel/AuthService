@@ -2,11 +2,18 @@ package com.judge.auth.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Helpers {
+
+	static public Date dateAfterHours(Integer hours){
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.HOUR_OF_DAY, 24);
+		System.out.println(System.currentTimeMillis());
+		System.out.println(calendar.getTimeInMillis());
+		return calendar.getTime();
+	}
+
 	static public Boolean isInRange(String str, Integer minLength, Integer maxLength) {
 		return (minLength <= str.length() && str.length() <= maxLength);
 	}
